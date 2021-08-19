@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Product from './Product';
-
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 class Products extends Component {
   render() {
     let products = this.props.products.map((product) => {
@@ -15,9 +16,14 @@ class Products extends Component {
     });
 
     return (
-      <div className="Product-wrapper">
-        {products}
-      </div>
+      <Container maxWidth="md" className="cardGrid">
+      {/* End hero unit */}
+      <Grid container spacing={4}>
+
+       {products}
+
+      </Grid>
+      </Container>
     );
   }
 }

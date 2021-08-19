@@ -1,8 +1,37 @@
 import React, { Component } from 'react';
 import Products from './components/Products';
 import Cart from './components/Cart';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import StorageIcon from '@material-ui/icons/Storage';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        consignmenthive
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 class App extends Component {
+
   constructor() {
     super();
 
@@ -81,20 +110,57 @@ class App extends Component {
     });
   }
 
+
+
+
+
   render() {
+
     return (
+
       <div className="App">
-        <header className="App__header">
+        <AppBar position="relative">
+        <Toolbar>
+          <StorageIcon/>
+          <Typography variant="h6" color="inherit" noWrap>
+            Consignment Hive
+          </Typography>
           {!this.state.isCartOpen &&
+
             <div className="App__view-cart-wrapper">
+              <ShoppingCartIcon/>
               <button className="App__view-cart" onClick={()=> this.setState({isCartOpen: true})}>Cart</button>
             </div>
           }
+        </Toolbar>
+      </AppBar>
+
+        <div className="App__header" >
+          <Container maxWidth="sm">
+
           <div className="App__title">
-            <h1>{this.state.shop.name}: React Example</h1>
-            <h2>{this.state.shop.description}</h2>
+            <h1>{this.state.shop.name}</h1>
+
           </div>
-        </header>
+            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+              {this.state.shop.description}
+            </Typography>
+            <div >
+              <Grid container spacing={2} justifyContent="center">
+                {/* <Grid item>
+                  <Button variant="contained" color="primary">
+                    Main call to action
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button variant="outlined" color="primary">
+                    Secondary action
+                  </Button>
+                </Grid> */}
+              </Grid>
+            </div>
+          </Container>
+        </div>
         <Products
           products={this.state.products}
           client={this.props.client}
@@ -107,7 +173,19 @@ class App extends Component {
           updateQuantityInCart={this.updateQuantityInCart}
           removeLineItemInCart={this.removeLineItemInCart}
         />
+                    {/* Footer */}
+                  <footer>
+          <Typography variant="h6" align="center" gutterBottom>
+            Footer
+          </Typography>
+          <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+            Really?  At the bottom already?  Please stick around or sign up for our newsletter!
+          </Typography>
+          <Copyright />
+        </footer>
+          {/* End footer */}
       </div>
+
     );
   }
 }

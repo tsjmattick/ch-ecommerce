@@ -39,7 +39,7 @@ h2 {
  * ============================== */
 .App__header {
   background-color: #222;
-  background-image: url('https://unsplash.it/1000/300?image=823');
+  background-image: url('https://picsum.photos/id/861/1024/768');
   background-size: cover;
   color: white;
   padding: 10px 10px;
@@ -345,11 +345,17 @@ h2 {
 /* PRODUCTS
  * ============================== */
 .Product {
+  height: 100%;
+  display: flex;
   flex: 0 1 31%;
+  flex-direction: column;
+
   margin-left: 1%;
   margin-right: 1%;
   margin-bottom: 3%;
+
 }
+
 
 .Product__title {
   font-size: 1.3rem;
@@ -457,3 +463,10 @@ h2 {
   background: #fbefee;
   color: #c23628;
 }
+.cardGrid {
+  padding:8vh; 
+}
+.cardMedia {
+  padding-top: '56.25%'
+}
+
